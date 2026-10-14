@@ -1,0 +1,1077 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100e17">
+<title>Moodboard — Feel Something</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+  --bg: #100e17;
+  --panel: #191622;
+  --panel2: #211c2c;
+  --text: #f8f4ff;
+  --muted: #aaa2b8;
+  --accent: #c4a7ff;
+  --line: #342c40;
+  --green: #b5f0c9;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 20% 0%, #382448 0%, transparent 36%),
+    radial-gradient(ellipse at 95% 45%, #242440 0%, transparent 35%),
+    var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+}
+
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+
+button:focus-visible, input:focus-visible,
+textarea:focus-visible, a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.app {
+  max-width: 1440px;
+  margin: auto;
+  padding: 24px 5%;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.logo span { color: var(--accent); }
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.status {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  margin-right: 7px;
+}
+
+.icon-button, .secondary-button {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--text);
+  background: #ffffff06;
+  padding: 11px 15px;
+}
+
+.icon-button:hover, .secondary-button:hover {
+  background: #ffffff12;
+}
+
+.hero {
+  padding: 58px 0 36px;
+  max-width: 730px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  color: var(--accent);
+  letter-spacing: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  margin: 0 0 17px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(43px, 6vw, 76px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+  font-weight: 600;
+  margin: 0;
+}
+
+h1 em { color: var(--accent); }
+
+.hero-description {
+  color: var(--muted);
+  max-width: 520px;
+  font-size: 15px;
+  line-height: 1.9;
+  margin-top: 19px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, .85fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.panel {
+  background: #17141fdf;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 24px;
+  min-width: 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+h2, h3, p { margin-top: 0; }
+
+h2 {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.small-muted {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mood {
+  color: var(--text);
+  background: #ffffff04;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  padding: 16px 6px;
+  text-align: center;
+  transition: .2s ease;
+}
+
+.mood:hover { background: #ffffff0b; }
+
+.mood.active {
+  border-color: var(--accent);
+  background: #c4a7ff16;
+  box-shadow: 0 0 20px #c4a7ff0b;
+}
+
+.mood-emoji {
+  display: block;
+  font-size: 25px;
+  margin-bottom: 9px;
+}
+
+.mood-name {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.mood-description {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 94px;
+  resize: vertical;
+  background: #100e17;
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 15px;
+  line-height: 1.7;
+  font-size: 13px;
+}
+
+textarea::placeholder { color: #797184; }
+
+.full-button {
+  border: 0;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #1a1226;
+  padding: 13px 17px;
+  font-weight: 700;
+  font-size: 13px;
+  transition: .2s;
+}
+
+.full-button:hover { filter: brightness(1.08); }
+
+.text-button {
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font-size: 12px;
+  padding: 10px 0;
+}
+
+.input-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--line);
+  margin: 25px 0;
+}
+
+.featured {
+  background:
+    radial-gradient(ellipse at 10% 0%, #49315e 0%, transparent 65%),
+    linear-gradient(150deg, #292036, #191621);
+  overflow: hidden;
+}
+
+.featured-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.match-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  color: var(--accent);
+}
+
+.cover-wrap {
+  position: relative;
+  margin-bottom: 21px;
+}
+
+.cover {
+  width: 100%;
+  aspect-ratio: 1.35 / 1;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #6c528b, #292d4e, #171520);
+}
+
+.cover-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 76px;
+}
+
+.song-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(25px, 3vw, 36px);
+  line-height: 1.2;
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+
+.song-artist {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 17px 0 23px;
+}
+
+.tag {
+  border: 1px solid #ffffff16;
+  border-radius: 30px;
+  padding: 7px 11px;
+  color: #ded4ee;
+  background: #ffffff06;
+  font-size: 10px;
+}
+
+.featured-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.featured-actions button {
+  min-height: 46px;
+}
+
+.song-list-section { margin-top: 30px; }
+
+.song-list {
+  display: grid;
+  gap: 10px;
+}
+
+.song-row {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 13px;
+  background: #ffffff04;
+  border: 1px solid #ffffff0b;
+  border-radius: 14px;
+  padding: 9px;
+}
+
+.song-thumb {
+  width: 54px;
+  height: 54px;
+  border-radius: 9px;
+  object-fit: cover;
+  background: #30273e;
+}
+
+.song-row-title {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 4px;
+  overflow-wrap: anywhere;
+}
+
+.song-row-artist {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.row-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.round-button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #ffffff05;
+  color: var(--text);
+}
+
+.round-button:hover { border-color: var(--accent); }
+
+.quote {
+  padding: 24px 5px 0;
+  text-align: center;
+}
+
+.quote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.quote small {
+  color: var(--muted);
+  letter-spacing: 2px;
+  font-size: 9px;
+}
+
+.view-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 17px;
+}
+
+.tab {
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: 8px 13px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.tab.active {
+  background: #c4a7ff18;
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.empty-state {
+  color: var(--muted);
+  text-align: center;
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  padding: 28px 15px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  margin-top: 42px;
+  padding-top: 23px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+footer strong { color: var(--accent); }
+
+#toast {
+  position: fixed;
+  z-index: 10;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #eee4ff;
+  color: #21152f;
+  padding: 12px 18px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: .2s;
+  max-width: 90%;
+  text-align: center;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 850px) {
+  .app { padding: 20px 4%; }
+  .layout { grid-template-columns: 1fr; }
+  .hero { padding-top: 43px; }
+  .cover { max-height: 350px; }
+}
+
+@media (max-width: 480px) {
+  .app { padding: 17px 14px; }
+  header { align-items: flex-start; }
+  .logo { font-size: 20px; }
+  .status { display: none; }
+  .hero { padding-top: 38px; }
+  h1 { font-size: 45px; }
+  .hero-description { font-size: 13px; }
+  .panel { padding: 17px; border-radius: 18px; }
+  .mood-grid { gap: 7px; }
+  .mood { padding: 13px 3px; }
+  .mood-description { font-size: 9px; }
+  .song-row { grid-template-columns: 45px minmax(0, 1fr) auto; gap: 9px; }
+  .song-thumb { width: 45px; height: 45px; }
+  .round-button { width: 32px; height: 32px; }
+  footer { display: block; }
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<header>
+  <div class="logo">moodboard<span>.</span> ♫</div>
+  <div class="header-right">
+    <span class="status"><span class="dot"></span>Your little corner of music</span>
+    <button class="icon-button" id="favoritesHeader">♡ <span id="favoriteCount">0</span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <p class="eyebrow">A little music, a little you</p>
+  <h1>What does your<br>heart <em>sound like?</em></h1>
+  <p class="hero-description">
+    For the days you feel everything, and the days you feel nothing.
+    Find the songs that sound a little like you.
+  </p>
+</section>
+
+<main class="layout">
+
+<div>
+  <section class="panel">
+    <div class="section-heading">
+      <h2>How are you feeling?</h2>
+      <span class="small-muted">01 / YOUR VIBE</span>
+    </div>
+
+    <div class="mood-grid" id="moodGrid"></div>
+
+    <div class="divider"></div>
+
+    <div class="section-heading">
+      <h2>Or put it into words</h2>
+      <span class="small-muted">OPTIONAL</span>
+    </div>
+
+    <textarea id="feelingInput"
+      placeholder="It's one of those rainy evenings. I'm nostalgic, overthinking everything, and missing the old days..."></textarea>
+
+    <div class="input-actions">
+      <button class="text-button" id="clearText">Clear text</button>
+      <button class="full-button" id="analyzeBtn">Find my mood ↗</button>
+    </div>
+    <p class="small-muted" style="margin:12px 0 0;line-height:1.7">
+      Mood detection runs in your browser using simple keyword matching.
+      Your text isn't sent to an AI service.
+    </p>
+  </section>
+
+  <section class="song-list-section panel">
+    <div class="section-heading">
+      <h2 id="listHeading">More for your mood</h2>
+      <span class="small-muted" id="listCount">YOUR MIX</span>
+    </div>
+
+    <div class="view-tabs">
+      <button class="tab active" data-view="recommended">Discover</button>
+      <button class="tab" data-view="favorites">Favourites ♡</button>
+    </div>
+
+    <div class="song-list" id="songList"></div>
+  </section>
+</div>
+
+<div>
+  <section class="panel featured">
+    <div class="featured-top">
+      <span class="match-label" id="matchLabel">✦ YOUR MOOD MATCH</span>
+      <span class="small-muted" id="moodNote">somewhere in the past</span>
+    </div>
+
+    <img id="cover" class="cover"
+      src="https://placehold.co/600x450/30243e/e9dcff?text=Your+Soundtrack"
+      alt="Recommended song artwork">
+
+    <h2 class="song-title" id="songTitle">Kho Gaye Hum Kahan</h2>
+    <p class="song-artist" id="songArtist">Jasleen Royal, Prateek Kuhad</p>
+
+    <div class="tags" id="tags"></div>
+
+    <div class="featured-actions">
+      <button class="full-button" id="listenBtn">▶ Find song</button>
+      <button class="secondary-button" id="favoriteBtn">♡ Save song</button>
+    </div>
+
+    <button class="text-button" id="anotherBtn" style="margin-top:12px">
+      ↻ Give me another song
+    </button>
+
+    <div class="quote">
+      <p id="quoteText">"Some memories never really leave us."</p>
+      <small>A NOTE TO YOURSELF ✧</small>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <div><strong>moodboard.</strong> — your feelings, your soundtrack.</div>
+  <div>Made for the feelings we can't always explain.</div>
+</footer>
+
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const moods = [
+  {
+    id:"happy", label:"Happy", emoji:"☀️",
+    desc:"life feels good", note:"a little sunshine",
+    color:"#b78c4c",
+    quote:"Some days, just being here is enough.",
+    songs:[
+      ["Ilahi","Arijit Singh"],
+      ["Love You Zindagi","Jasleen Royal"],
+      ["Golden","Harry Styles"],
+      ["Sunflower","Post Malone"]
+    ]
+  },
+  {
+    id:"heartbroken", label:"Heartbroken", emoji:"🌧️",
+    desc:"let it rain", note:"let it out",
+    color:"#4d678d",
+    quote:"Even the quietest feelings deserve a song.",
+    songs:[
+      ["Channa Mereya","Arijit Singh"],
+      ["Agar Tum Saath Ho","Alka Yagnik"],
+      ["The Night We Met","Lord Huron"],
+      ["Glimpse of Us","Joji"]
+    ]
+  },
+  {
+    id:"peaceful", label:"Peaceful", emoji:"🌿",
+    desc:"slow down", note:"nothing to prove",
+    color:"#557b6c",
+    quote:"You are allowed to take life slowly.",
+    songs:[
+      ["Kasoor","Prateek Kuhad"],
+      ["Husn","Anuv Jain"],
+      ["Bloom","The Paper Kites"],
+      ["Yellow","Coldplay"]
+    ]
+  },
+  {
+    id:"nostalgic", label:"Nostalgic", emoji:"🌙",
+    desc:"back in time", note:"somewhere in the past",
+    color:"#766095",
+    quote:"Some memories never really leave us.",
+    songs:[
+      ["Kho Gaye Hum Kahan","Jasleen Royal"],
+      ["Phir Le Aya Dil","Arijit Singh"],
+      ["Those Eyes","New West"],
+      ["Somewhere Only We Know","Keane"]
+    ]
+  },
+  {
+    id:"romantic", label:"In love", emoji:"💗",
+    desc:"it's always them", note:"a familiar feeling",
+    color:"#a45d89",
+    quote:"Some people become your favourite feeling.",
+    songs:[
+      ["Heeriye","Jasleen Royal"],
+      ["Until I Found You","Stephen Sanchez"],
+      ["Iktara","Kavita Seth"],
+      ["Can't Help Falling in Love","Elvis Presley"]
+    ]
+  },
+  {
+    id:"unbothered", label:"Unbothered", emoji:"🕶️",
+    desc:"protect my peace", note:"on my own terms",
+    color:"#8b795d",
+    quote:"Not everything deserves your energy.",
+    songs:[
+      ["Houdini","Dua Lipa"],
+      ["Flowers","Miley Cyrus"],
+      ["IDGAF","Dua Lipa"],
+      ["Feather","Sabrina Carpenter"]
+    ]
+  },
+  {
+    id:"main", label:"Main character", emoji:"⚡",
+    desc:"my time starts now", note:"this is your moment",
+    color:"#a55c48",
+    quote:"This is your story. Keep going.",
+    songs:[
+      ["Zinda","Siddharth Mahadevan"],
+      ["Kar Har Maidaan Fateh","Sukhwinder Singh"],
+      ["Hall of Fame","The Script"],
+      ["Unstoppable","Sia"]
+    ]
+  },
+  {
+    id:"overthinking", label:"Overthinking", emoji:"🌌",
+    desc:"lost in my head", note:"one thought at a time",
+    color:"#54578e",
+    quote:"You don't have to solve everything tonight.",
+    songs:[
+      ["Aankhon Se Batana","Dikshant"],
+      ["Aaftaab","The Local Train"],
+      ["Vienna","Billy Joel"],
+      ["Let Her Go","Passenger"]
+    ]
+  },
+  {
+    id:"lonely", label:"Lonely", emoji:"🪐",
+    desc:"here, but elsewhere", note:"a little distant",
+    color:"#53798b",
+    quote:"You can feel alone and still be worthy of connection.",
+    songs:[
+      ["Alag Aasmaan","Anuv Jain"],
+      ["Somewhere Only We Know","Keane"],
+      ["Fourth of July","Sufjan Stevens"],
+      ["Fix You","Coldplay"]
+    ]
+  }
+];
+
+let currentMood = moods[3];
+let currentSong = null;
+let currentView = "recommended";
+let favorites = loadFavorites();
+let lastIndex = -1;
+let requestNumber = 0;
+
+const $ = id => document.getElementById(id);
+
+function loadFavorites() {
+  try {
+    return JSON.parse(localStorage.getItem("moodboard-favorites")) || [];
+  } catch {
+    return [];
+  }
+}
+
+function saveFavorites() {
+  try {
+    localStorage.setItem("moodboard-favorites", JSON.stringify(favorites));
+  } catch {
+    showToast("Browser storage isn't available.");
+  }
+  updateFavoriteCount();
+}
+
+function showToast(message) {
+  const toast = $("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => toast.classList.remove("show"), 2400);
+}
+
+function renderMoods() {
+  $("moodGrid").innerHTML = moods.map(m => `
+    <button class="mood ${m.id === currentMood.id ? "active" : ""}"
+      data-mood="${m.id}" aria-pressed="${m.id === currentMood.id}">
+      <span class="mood-emoji">${m.emoji}</span>
+      <span class="mood-name">${m.label}</span>
+      <span class="mood-description">${m.desc}</span>
+    </button>
+  `).join("");
+}
+
+function songId(song) {
+  return (song.title + "|" + song.artist).toLowerCase();
+}
+
+function isFavorite(song) {
+  return favorites.some(s => songId(s) === songId(song));
+}
+
+function updateFavoriteCount() {
+  $("favoriteCount").textContent = favorites.length;
+  $("favoriteBtn").textContent = currentSong && isFavorite(currentSong)
+    ? "♥ Saved"
+    : "♡ Save song";
+}
+
+function makeSong(title, artist) {
+  return {
+    title,
+    artist,
+    artwork: "",
+    url: "",
+    mood: currentMood.label
+  };
+}
+
+function renderFeatured(song, ticket) {
+  currentSong = song;
+  $("songTitle").textContent = song.title;
+  $("songArtist").textContent = song.artist;
+  $("matchLabel").textContent = "✦ " + currentMood.label.toUpperCase() + " MATCH";
+  $("moodNote").textContent = currentMood.note;
+  $("quoteText").textContent = '"' + currentMood.quote + '"';
+
+  $("tags").innerHTML = `
+    <span class="tag">${currentMood.label}</span>
+    <span class="tag">Mood curated</span>
+    <span class="tag">Your soundtrack</span>
+  `;
+
+  const cover = $("cover");
+  cover.style.background = `linear-gradient(135deg, ${currentMood.color}, #191622)`;
+  cover.src = song.artwork ||
+    `https://placehold.co/600x450/${currentMood.color.replace("#","")}/ffffff?text=${encodeURIComponent(song.title)}`;
+  cover.alt = "Artwork for " + song.title;
+
+  updateFavoriteCount();
+
+  if (song.artwork) return;
+
+  // Look up real artwork and metadata from Apple's public search API.
+  const query = encodeURIComponent(song.title + " " + song.artist);
+  fetch("https://itunes.apple.com/search?term=" + query + "&entity=song&limit=8")
+    .then(r => {
+      if (!r.ok) throw new Error("Artwork lookup failed");
+      return r.json();
+    })
+    .then(data => {
+      if (ticket !== requestNumber || !currentSong ||
+          songId(currentSong) !== songId(song)) return;
+
+      const results = data.results || [];
+      const match = results.find(r =>
+        r.trackName && r.artistName &&
+        r.trackName.toLowerCase().includes(song.title.toLowerCase())
+      ) || results[0];
+
+      if (!match) return;
+
+      song.artwork = (match.artworkUrl100 || "").replace("100x100bb", "600x600bb");
+      song.url = match.trackViewUrl || "";
+      song.artist = match.artistName || song.artist;
+
+      $("songArtist").textContent = song.artist;
+      $("cover").src = song.artwork || $("cover").src;
+
+      renderList();
+      updateFavoriteCount();
+    })
+    .catch(() => {
+      // Curated recommendations still work if the lookup is unavailable.
+    });
+}
+
+function chooseSong() {
+  let index = Math.floor(Math.random() * currentMood.songs.length);
+
+  if (currentMood.songs.length > 1) {
+    while (index === lastIndex) {
+      index = Math.floor(Math.random() * currentMood.songs.length);
+    }
+  }
+
+  lastIndex = index;
+  const [title, artist] = currentMood.songs[index];
+  const song = makeSong(title, artist);
+
+  // Reuse artwork already saved in favourites, when available.
+  const saved = favorites.find(s => songId(s) === songId(song));
+  if (saved) Object.assign(song, saved);
+
+  requestNumber++;
+  renderFeatured(song, requestNumber);
+}
+
+function renderList() {
+  const list = $("songList");
+  const songs = currentView === "favorites"
+    ? favorites
+    : currentMood.songs.map(([title, artist]) => {
+        const saved = favorites.find(s => songId(s) === songId(makeSong(title, artist)));
+        return saved || makeSong(title, artist);
+      });
+
+  $("listHeading").textContent = currentView === "favorites"
+    ? "Your saved soundtrack"
+    : "More for your mood";
+
+  $("listCount").textContent = songs.length + " SONGS";
+
+  if (!songs.length) {
+    list.innerHTML = `<div class="empty-state">
+      ${currentView === "favorites"
+        ? "No saved songs yet.<br>Tap ♡ Save song on a recommendation to keep it here."
+        : "No songs found for this mood yet."}
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = songs.map((s, i) => `
+    <div class="song-row">
+      <img class="song-thumb"
+        src="${s.artwork || `https://placehold.co/100x100/30243e/eee4ff?text=${encodeURIComponent("♫")}`}"
+        alt="" loading="lazy">
+      <div>
+        <div class="song-row-title">${escapeHTML(s.title)}</div>
+        <div class="song-row-artist">${escapeHTML(s.artist)}</div>
+      </div>
+      <div class="row-actions">
+        <button class="round-button" data-listen="${i}" aria-label="Find song">↗</button>
+        <button class="round-button" data-save="${i}" aria-label="Save song">
+          ${isFavorite(s) ? "♥" : "♡"}
+        </button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, ch => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;",
+    '"':"&quot;", "'":"&#39;"
+  })[ch]);
+}
+
+function searchSong(song) {
+  const query = encodeURIComponent(song.title + " " + song.artist);
+  window.open("https://www.youtube.com/results?search_query=" + query,
+    "_blank", "noopener,noreferrer");
+}
+
+function toggleFavorite(song) {
+  if (isFavorite(song)) {
+    favorites = favorites.filter(s => songId(s) !== songId(song));
+    showToast("Removed from your favourites");
+  } else {
+    favorites.unshift({...song, mood: currentMood.label});
+    showToast("Saved to your soundtrack ♡");
+  }
+
+  saveFavorites();
+  updateFavoriteCount();
+  renderList();
+}
+
+function setMood(mood) {
+  currentMood = mood;
+  lastIndex = -1;
+  renderMoods();
+  chooseSong();
+  renderList();
+}
+
+function analyzeMood(text) {
+  const value = text.toLowerCase();
+
+  const rules = [
+    ["heartbroken", ["heartbroken","breakup","broke up","rejected","crying","tears","miss them","miss her","miss him","hurt","betrayed","goodbye"]],
+    ["nostalgic", ["nostalgic","old days","memories","remember when","childhood","the past","used to","throwback","back then"]],
+    ["overthinking", ["overthinking","overthink","anxious","worrying","can't sleep","cant sleep","too many thoughts","confused","stressed"]],
+    ["lonely", ["lonely","alone","left out","nobody understands","no one understands","isolated","forgotten","invisible"]],
+    ["romantic", ["in love","crush","butterflies","love them","love her","love him","falling for","romantic"]],
+    ["unbothered", ["unbothered","done with","moving on","protect my peace","don't care","dont care","over it","myself first"]],
+    ["main", ["motivated","main character","confident","ambitious","productive","new beginning","my time","ready to win","determined"]],
+    ["peaceful", ["peaceful","calm","relaxed","quiet evening","nature","slow down","at peace","peace"]],
+    ["happy", ["happy","excited","amazing","great day","grateful","joyful","good mood","feeling good"]]
+  ];
+
+  for (const [id, keywords] of rules) {
+    if (keywords.some(word => value.includes(word))) {
+      return moods.find(m => m.id === id);
+    }
+  }
+
+  return null;
+}
+
+$("moodGrid").addEventListener("click", e => {
+  const button = e.target.closest("[data-mood]");
+  if (!button) return;
+  setMood(moods.find(m => m.id === button.dataset.mood));
+});
+
+$("anotherBtn").addEventListener("click", chooseSong);
+
+$("analyzeBtn").addEventListener("click", () => {
+  const text = $("feelingInput").value.trim();
+
+  if (!text) {
+    showToast("Tell me a little about how you're feeling first.");
+    $("feelingInput").focus();
+    return;
+  }
+
+  const mood = analyzeMood(text);
+
+  if (!mood) {
+    showToast("Couldn't match that yet. Try choosing a mood below.");
+    return;
+  }
+
+  setMood(mood);
+  showToast("Your vibe feels " + mood.label.toLowerCase() + " ✨");
+});
+
+$("clearText").addEventListener("click", () => {
+  $("feelingInput").value = "";
+  $("feelingInput").focus();
+});
+
+$("listenBtn").addEventListener("click", () => {
+  if (currentSong) searchSong(currentSong);
+});
+
+$("favoriteBtn").addEventListener("click", () => {
+  if (currentSong) toggleFavorite(currentSong);
+});
+
+$("favoritesHeader").addEventListener("click", () => {
+  currentView = "favorites";
+  document.querySelectorAll("[data-view]").forEach(b =>
+    b.classList.toggle("active", b.dataset.view === currentView)
+  );
+  renderList();
+  $("songList").scrollIntoView({behavior:"smooth", block:"center"});
+});
+
+document.querySelectorAll("[data-view]").forEach(button => {
+  button.addEventListener("click", () => {
+    currentView = button.dataset.view;
+    document.querySelectorAll("[data-view]").forEach(b =>
+      b.classList.toggle("active", b === button)
+    );
+    renderList();
+  });
+});
+
+$("songList").addEventListener("click", e => {
+  const listen = e.target.closest("[data-listen]");
+  const save = e.target.closest("[data-save]");
+  const songs = currentView === "favorites"
+    ? favorites
+    : currentMood.songs.map(([title, artist]) =>
+        favorites.find(s => songId(s) === songId(makeSong(title, artist))) ||
+        makeSong(title, artist)
+      );
+
+  if (listen) {
+    const song = songs[Number(listen.dataset.listen)];
+    if (song) searchSong(song);
+  }
+
+  if (save) {
+    const song = songs[Number(save.dataset.save)];
+    if (song) toggleFavorite(song);
+  }
+});
+
+renderMoods();
+chooseSong();
+renderList();
+updateFavoriteCount();
+</script>
+</body>
+</html>
