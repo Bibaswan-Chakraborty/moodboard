@@ -1,0 +1,36 @@
+🎧 Moodboard — Your Feelings, Your Soundtrack
+
+What if your mood had its own soundtrack?
+
+Moodboard is a small, interactive web development project that connects moods, music, and aesthetics in one place.
+
+✨ Features
+
+- 🎭 Choose from 9 different moods
+- 🎵 Get random song recommendations based on your selected mood
+- 💬 Discover mood-specific quotes
+- 🎨 Explore a dark, aesthetic interface with mood-based gradients
+- ▶️ Search for recommended songs directly on YouTube
+- 📱 Responsive layout for mobile and desktop screens
+
+🛠️ Built With
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+
+🚀 Run Locally
+
+1. Clone or download this repository.
+2. Open "index.html" in your browser.
+3. Select a mood and explore your soundtrack.
+
+No additional libraries or build tools are required.
+
+📌 Project Status
+
+A personal learning project built to practise front-end web development.
+
+👨‍💻 Author
+
+Created as part of my journey into web development.
